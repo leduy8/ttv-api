@@ -5,6 +5,7 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 
 class BaseConfig:
     LOGGING_LEVEL = logging.INFO
+    SECRET_KEY = os.getenv('SECRET_KEY') or 'ttv-clone1234'
 
     # ? For sqlite
     # SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or 'sqlite:///' + os.path.join(basedir, '{db_name}.db')
@@ -28,7 +29,7 @@ class ProductionConfig(BaseConfig):
     pass
 
 
-class Config(DevelopmentConfig):
+class TestingConfig(DevelopmentConfig):
     TESTING = True
 
     # ? For sqlite
