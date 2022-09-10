@@ -2,7 +2,7 @@ import json
 import logging
 import sys
 
-from main import config
+from main import Config
 
 
 class ServiceLogger:
@@ -15,7 +15,7 @@ class ServiceLogger:
 
         # Create a logger for services
         logger = logging.getLogger(name)
-        logger.setLevel(config.LOGGING_LEVEL)
+        logger.setLevel(Config.LOGGING_LEVEL)
 
         # Append current date time and log level to the beginning of the log message
         formatter = logging.Formatter(

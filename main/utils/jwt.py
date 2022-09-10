@@ -1,11 +1,11 @@
 import jwt
 from flask import request
 
-from main.config import BaseConfig
-from main.commons.exceptions import MissingAuthorzationError, InvalidAuthorizationError
+from main import Config
+from main.commons.exceptions import InvalidAuthorizationError, MissingAuthorzationError
 
 
-def create_access_token(payload: dict, key=BaseConfig.SECRET_KEY) -> str:
+def create_access_token(payload: dict, key=Config.SECRET_KEY) -> str:
     if type(payload) == dict:
         jwt.encode(payload=payload, key=key, algorithm="HS256")
 
@@ -18,7 +18,7 @@ def get_jwt_data() -> str:
     if not auth_header:
         raise MissingAuthorzationError("Authorization header not found")
 
-    auth_header_split = auth_header.split(' ')
+    auth_header_split = auth_header.split(" ")
 
     if not auth_header.startswith("Bearer ") or len(auth_header_split) != 2:
         raise InvalidAuthorizationError("Authorization header is invalid")
@@ -28,6 +28,6 @@ def get_jwt_data() -> str:
 
 def get_jwt_payload(token: str):
     try:
-        return jwt.decode(jwt=token, key=BaseConfig.SECRET_KEY, algorithms=["HS256"])
+        return jwt.decode(jwt=token, key=Config.SECRET_KEY, algorithms=["HS256"])
     except jwt.DecodeError as e:
         raise e

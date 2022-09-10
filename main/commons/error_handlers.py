@@ -18,7 +18,7 @@ def register_error_handlers(app):
 
     @app.errorhandler(BaseError)
     def handle_error(error: BaseError):
-        from main.libs.log import ServiceLogger
+        from main.utils.log import ServiceLogger
 
         logger = ServiceLogger(__name__)
 
@@ -42,7 +42,7 @@ def register_error_handlers(app):
 
     @app.errorhandler(Exception)
     def handle_exception(e):
-        from main.libs.log import ServiceLogger
+        from main.utils.log import ServiceLogger
 
         logger = ServiceLogger(__name__)
         logger.exception(message=str(e))

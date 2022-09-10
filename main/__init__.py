@@ -6,10 +6,10 @@ from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
 
 from .commons.error_handlers import register_error_handlers
-from .config import DevelopmentConfig
+from .config import DevelopmentConfig as Config
 
 app = Flask(__name__)
-app.config.from_object(DevelopmentConfig)
+app.config.from_object(Config)
 
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
