@@ -7,7 +7,8 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 class BaseConfig:
     LOGGING_LEVEL = logging.INFO
     SECRET_KEY = os.getenv("SECRET_KEY") or "ttv-clone1234"
-    STREAMS_PER_PAGE = 10
+    BASE_ITEM_PER_PAGE = 10
+    STREAMS_PER_PAGE = BASE_ITEM_PER_PAGE
 
     # ? For sqlite
     # SQLALCHEMY_DATABASE_URI = os.environ.get(

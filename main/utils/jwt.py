@@ -7,7 +7,7 @@ from main.commons.exceptions import InvalidAuthorizationError, MissingAuthorzati
 
 def create_access_token(payload: dict, key=Config.SECRET_KEY) -> str:
     if type(payload) == dict:
-        jwt.encode(payload=payload, key=key, algorithm="HS256")
+        return jwt.encode(payload=payload, key=key, algorithm="HS256")
 
     raise TypeError("Payload must be a dictionary")
 
