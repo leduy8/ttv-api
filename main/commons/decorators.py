@@ -9,7 +9,7 @@ from main.schemas.base import BaseSchema
 from main.utils.jwt import get_jwt_data, get_jwt_payload
 
 
-def authenticate_user():
+def authenticate_user(check_admin: bool = False):
     def decorated(f):
         @functools.wraps(f)
         def wrapper(*args, **kwargs):
@@ -23,7 +23,11 @@ def authenticate_user():
             if not user:
                 raise Unauthorized(error_message="Invalid user")
 
-            return f(user, *args, **kwargs)
+            return f(
+                {"user": user, "is_admin": user.is_admin if check_admin else None},
+                *args,
+                **kwargs
+            )
 
         return wrapper
 

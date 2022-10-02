@@ -17,6 +17,7 @@ class StatusCode:
 class _ErrorCode:
     BAD_REQUEST = 400000
     VALIDATION_ERROR = 400001
+    ALREADY_EXISTS = 400002
     UNAUTHORIZED = 401000
     FORBIDDEN = 403000
     NOT_FOUND = 404000
@@ -32,6 +33,7 @@ class _ErrorMessage:
     NOT_FOUND = "Not found."
     METHOD_NOT_ALLOWED = "Method not allowed."
     INTERNAL_SERVER_ERROR = "Internal server error."
+    ALREADY_EXISTS = "Already exists."
 
 
 class BaseError(Exception):
@@ -116,3 +118,9 @@ class MissingAuthorzationError(ValueError):
 
 class InvalidAuthorizationError(ValueError):
     pass
+
+
+class AlreadyExists(BaseError):
+    status_code = StatusCode.BAD_REQUEST
+    error_message = _ErrorMessage.ALREADY_EXISTS
+    error_code = _ErrorCode.ALREADY_EXISTS
