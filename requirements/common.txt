@@ -12,3 +12,6 @@ wheel>=0.37.1
 PyMySQL>=1.0.2
 psycopg2>=2.9.3
 Gunicorn
+Flask-OAuthlib>=0.9.6
+redis>=4.3.4
+python-dotenv>=0.21.0
