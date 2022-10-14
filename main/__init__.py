@@ -26,7 +26,7 @@ def register_subpackages():
         import_module("main.models." + m)
 
     import main.controllers  # noqa
-    import main.services.google  # noqa
+    import main.services  # noqa
 
 
 register_subpackages()
