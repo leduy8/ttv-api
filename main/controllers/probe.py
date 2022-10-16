@@ -5,4 +5,4 @@ from main import app
 
 @app.get("/ping")
 def ping():
-    return jsonify({'message': 'pong'})
+    return jsonify({"message": "pong"})

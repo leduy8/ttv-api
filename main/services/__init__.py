@@ -1,1 +1,1 @@
-from . import google, redis
+from . import redis
