@@ -19,6 +19,22 @@ def create_user(data: dict) -> UserModel:
         email=data["email"],
         password_hash=password_hash,
         display_name=data["display_name"],
+        verified_email=False,
+        is_google_account=False,
+    )
+
+    db.session.add(user)
+    db.session.commit()
+
+    return user
+
+
+def create_user_google(data: dict) -> UserModel:
+    user = UserModel(
+        email=data["email"],
+        profile_img=data["picture"],
+        verified_email=data["verified_email"],
+        is_google_account=True,
     )
 
     db.session.add(user)
