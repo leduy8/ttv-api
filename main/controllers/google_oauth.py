@@ -30,11 +30,10 @@ def google_login(data: dict):
         )
 
     user_info = res.json()
+    user = get_user_by_email(user_info["email"])
 
-    if not get_user_by_email(user_info["email"]):
+    if not user:
         user = create_user_google(user_info)
-    else:
-        user = get_user_by_email(user_info["email"])
 
     # ? Save only email to redis to save space, because user's data is saved in DB
     redis_client.set(
