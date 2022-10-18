@@ -1,1 +1,1 @@
-__all__ = ["stream", "user", "category"]
+__all__ = ["stream", "user", "category", "chat"]
